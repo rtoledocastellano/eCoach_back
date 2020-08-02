@@ -1,0 +1,21 @@
+@BASE_URL=http://localhost:8000/api
+POST {{BASE_URL}}/auth/signup HTTP/1.1
+content-type: application/json
+
+{
+  "name": "rafa",
+  "email": "rafa@fer.com",
+  "password": "1234"
+}
+
+###
+POST {{BASE_URL}}/auth/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "rafa@fer.com",
+  "password": "1234"
+}
+###
+GET {{BASE_URL}}/customers HTTP/1.1
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmFmYSIsImVtYWlsIjoicmFmYUBmZXIuY29tIiwiaWF0IjoxNTk2MzA0OTc1LCJleHAiOjE1OTYzMDUyNzV9.HRZJZGkF_aEWh-tFhknQlyDs1slTxWp76AFLt0A1O_Q
