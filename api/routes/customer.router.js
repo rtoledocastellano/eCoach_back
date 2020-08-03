@@ -4,7 +4,11 @@ const {
   addCustomer,
   getCustomer,
   getCustomerByTrainer,
-  updateCustomer
+  updateCustomer,
+  newAppointment,
+  customerAppointments,
+  updateCustomerAppointment,
+  getAppointment
 } = require('../controllers/customer.controller')
 
 router.get('/', getCustomerByTrainer)
@@ -12,5 +16,9 @@ router.post('/', addCustomer)
 router.get('/search')
 router.get('/:id', getCustomer)
 router.post('/:id', updateCustomer)
+router.get('/:id/appointment', customerAppointments)
+router.post('/:id/appointment', newAppointment)
+router.get('/:id/appointment/:appointmentId', getAppointment)
+router.post('/:id/appointment/:appointmentId', updateCustomerAppointment)
 
 module.exports = router

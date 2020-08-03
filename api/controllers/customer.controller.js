@@ -1,4 +1,5 @@
 const CustomerModel = require('../models/customer.model')
+const AppointmentModel = require('../models/appointment.model')
 const { handleError } = require('../utils')
 
 module.exports = {
@@ -6,7 +7,11 @@ module.exports = {
   getCustomer,
   getCustomerByTrainer,
   updateCustomer,
-  searchCustomerByName
+  searchCustomerByName,
+  newAppointment,
+  customerAppointments,
+  updateCustomerAppointment,
+  getAppointment
 }
 
 function addCustomer (req, res) {
@@ -45,5 +50,35 @@ function searchCustomerByName (req, res) {
     .find({ name: req.body })
     .then(users => {
       res.json(users)
+    })
+}
+
+function newAppointment (req, res) {
+  AppointmentModel
+    .create({ trainer: res.locals.user._id, customer: req.params.id, ...req.body })
+    .then(response => res.json(response))
+    .catch((err) => handleError(err, res))
+}
+
+function customerAppointments (req, res) {
+  AppointmentModel
+    .find({ customer: req.params.id })
+    .then(response => res.json(response))
+    .catch((err) => handleError(err, res))
+}
+
+function updateCustomerAppointment (req, res) {
+  AppointmentModel
+    .findOneAndUpdate(req.params.appointmemtId, req.body)
+    .then(appointment => {
+      res.json(appointment)
+    })
+}
+
+function getAppointment (req, res) {
+  AppointmentModel
+    .find({ appointment: req.params.appointmemtId })
+    .then(appoinment => {
+      res.json(appoinment)
     })
 }
