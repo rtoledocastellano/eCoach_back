@@ -8,12 +8,13 @@ const {
   newAppointment,
   customerAppointments,
   updateCustomerAppointment,
-  getAppointment
+  getAppointment,
+  searchCustomerByName
 } = require('../controllers/customer.controller')
 
 router.get('/', getCustomerByTrainer)
 router.post('/', addCustomer)
-router.get('/search')
+router.get('/search', searchCustomerByName)
 router.get('/:id', getCustomer)
 router.post('/:id', updateCustomer)
 router.get('/:id/appointment', customerAppointments)

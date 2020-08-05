@@ -46,16 +46,19 @@ function updateCustomer (req, res) {
 }
 
 function searchCustomerByName (req, res) {
+  console.log(req.body)
   CustomerModel
-    .find({ name: req.body })
+    .find({ name: { $regex: req.body.name } })
     .then(users => {
       res.json(users)
     })
+    .catch((err) => handleError(err, res))
 }
 
 function newAppointment (req, res) {
+  console.log(req.body)
   AppointmentModel
-    .create({ trainer: res.locals.user._id, customer: req.params.id, ...req.body })
+    .create({ trainer: res.locals.user._id, ...req.body })
     .then(response => res.json(response))
     .catch((err) => handleError(err, res))
 }
