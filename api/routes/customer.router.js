@@ -14,7 +14,7 @@ const {
 
 router.get('/', getCustomerByTrainer)
 router.post('/', addCustomer)
-router.get('/search', searchCustomerByName)
+router.get('/search/:query', searchCustomerByName)
 router.get('/:id', getCustomer)
 router.post('/:id', updateCustomer)
 router.get('/:id/appointment', customerAppointments)

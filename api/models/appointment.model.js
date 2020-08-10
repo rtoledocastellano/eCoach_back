@@ -21,13 +21,11 @@ const apointmentSchema = new mongoose.Schema({
   },
   customer: {
     type: mongoose.Types.ObjectId,
-    ref: 'customer',
-    required: [true, 'Customer is required']
+    ref: 'customer'
   },
   trainer: {
     type: mongoose.Types.ObjectId,
-    ref: 'user',
-    required: [true, 'Trainer is required']
+    ref: 'user'
   },
   date: {
     type: Date

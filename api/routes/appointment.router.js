@@ -1,9 +1,13 @@
 const router = require('express').Router()
 
 const {
-  getAppointments
+  getCoachAppointments,
+  getAppointment,
+  updateCustomerAppointment
 } = require('../controllers/appointment.controller')
 
-router.get('/', getAppointments)
+router.get('/', getCoachAppointments)
+router.get('/:id', getAppointment)
+router.post('/:id', updateCustomerAppointment)
 
 module.exports = router

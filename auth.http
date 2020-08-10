@@ -19,3 +19,5 @@ Content-Type: application/json
 ###
 GET {{BASE_URL}}/customers HTTP/1.1
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoicmFmYSIsImVtYWlsIjoicmFmYUBmZXIuY29tIiwiaWF0IjoxNTk2MzA0OTc1LCJleHAiOjE1OTYzMDUyNzV9.HRZJZGkF_aEWh-tFhknQlyDs1slTxWp76AFLt0A1O_Q
+
+

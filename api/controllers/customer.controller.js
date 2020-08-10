@@ -32,6 +32,7 @@ function getCustomer (req, res) {
 function getCustomerByTrainer (req, res) {
   CustomerModel
     .find({ trainer: res.locals.user._id })
+    .sort({ name: 1 })
     .then(users => {
       res.json(users)
     })
@@ -39,16 +40,15 @@ function getCustomerByTrainer (req, res) {
 
 function updateCustomer (req, res) {
   CustomerModel
-    .findOneAndUpdate(req.params.id, req.body)
+    .findByIdAndUpdate(req.params.id, req.body)
     .then(user => {
       res.json(user)
     })
 }
 
 function searchCustomerByName (req, res) {
-  console.log(req.body)
   CustomerModel
-    .find({ name: { $regex: req.body.name } })
+    .find({ name: { $regex: req.params.query } })
     .then(users => {
       res.json(users)
     })
@@ -56,7 +56,6 @@ function searchCustomerByName (req, res) {
 }
 
 function newAppointment (req, res) {
-  console.log(req.body)
   AppointmentModel
     .create({ trainer: res.locals.user._id, ...req.body })
     .then(response => res.json(response))
@@ -72,7 +71,7 @@ function customerAppointments (req, res) {
 
 function updateCustomerAppointment (req, res) {
   AppointmentModel
-    .findOneAndUpdate(req.params.appointmemtId, req.body)
+    .findByIdAndUpdate(req.params.id, req.body)
     .then(appointment => {
       res.json(appointment)
     })
@@ -80,7 +79,7 @@ function updateCustomerAppointment (req, res) {
 
 function getAppointment (req, res) {
   AppointmentModel
-    .find({ appointment: req.params.appointmemtId })
+    .findById({ appointment: req.params.appointmemtId })
     .then(appoinment => {
       res.json(appoinment)
     })
