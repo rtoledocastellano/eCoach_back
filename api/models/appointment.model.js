@@ -28,7 +28,14 @@ const apointmentSchema = new mongoose.Schema({
     ref: 'user'
   },
   date: {
-    type: Date
+    type: Date,
+    required: true
+  },
+  starts: {
+    type: String
+  },
+  finish: {
+    type: String
   },
   createdAt: {
     type: Date,
