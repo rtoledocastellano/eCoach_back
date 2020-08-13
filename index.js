@@ -8,6 +8,9 @@ const mongoose = require('mongoose')
 const morgan = require('morgan')
 
 // MONGOOSE
+console.log(`>>>> MONGO_URL: ${process.env.MONGO_URL}`)
+console.log(`>>>> MONGO_DB: ${process.env.MONGO_DB}`)
+
 mongoose.connect(process.env.MONGO_URL,
   {
     dbName: process.env.MONGO_DB || 'test',
